@@ -12,13 +12,14 @@ import DoctorProfileModal from './features/doctors/components/DoctorProfileModal
 import { useI18n } from './shared/i18n/I18nProvider';
 import type { Appointment } from './features/appointments/types';
 import { createAppointmentId, readAppointments, saveAppointment } from './features/appointments/services/appointmentStorage';
+import { readFavorites, writeFavorites } from './features/patients/services/favoriteStorage';
 
 export default function App() {
   const { t } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('All');
   const [activeTab, setActiveTab] = useState<AppTab>('Home');
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<number[]>(() => readFavorites());
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
   const [showNotifications, setShowNotifications] = useState(false);
   const [appointments, setAppointments] = useState<Appointment[]>(() => readAppointments());
@@ -30,9 +31,10 @@ export default function App() {
   }, []);
 
   const visibleDoctors = useDoctorDirectory(doctors, query, category);
-  const toggleFavorite = (id: number) => setFavorites((current) =>
-    current.includes(id) ? current.filter((item) => item !== id) : [...current, id]
-  );
+  const toggleFavorite = (id: number) => setFavorites((current) => {
+    const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
+    try { return writeFavorites(next); } catch { return next; }
+  });
 
   const handleBookAppointment = (details: { patientName: string; patientPhone: string; date: string; time: string }) => {
     if (!selectedDoctor) return;
