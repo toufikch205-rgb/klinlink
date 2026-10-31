@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { translations, type Language, type TranslationKey } from './translations';
 
 type I18nContextValue = {
@@ -10,7 +10,7 @@ type I18nContextValue = {
 const I18nContext = createContext<I18nContextValue | null>(null);
 const STORAGE_KEY = 'klinlink-language';
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
+export function I18nProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     try {
       return localStorage.getItem(STORAGE_KEY) === 'ar' ? 'ar' : 'en';
