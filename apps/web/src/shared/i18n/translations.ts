@@ -31,6 +31,7 @@ export const translations = {
     cardiology: 'Cardiology', heartHealth: 'Heart health', neurology: 'Neurology', brainNerves: 'Brain & nerves',
     cardiologist: 'Cardiologist', dentist: 'Dentist', neurologist: 'Neurologist',
     generalPractitioner: 'General Practitioner',
+    appointmentRequest: 'APPOINTMENT REQUEST', chooseDate: 'Choose date', availableTime: 'Available time', patientFullName: 'Your full name', phoneNumber: 'Phone number', confirmAppointment: 'Confirm appointment', bookingValidation: 'Enter your name, a valid phone number and a future date.', demoBookingDisclaimer: 'Demo only: this request is saved in this browser and is not sent to a clinic.', bookingRequested: 'Request saved · Demo', bookedFor: 'Booked for',
   },
   ar: {
     metaTitle: 'KLINLINK — رعاية صحية مترابطة', metaDescription: 'KLINLINK — اعثر على المختصين في الرعاية الصحية وأدر مواعيدك.',
@@ -63,6 +64,7 @@ export const translations = {
     cardiology: 'أمراض القلب', heartHealth: 'صحة القلب', neurology: 'طب الأعصاب', brainNerves: 'الدماغ والأعصاب',
     cardiologist: 'طبيب أمراض القلب', dentist: 'طبيب أسنان', neurologist: 'طبيب أعصاب',
     generalPractitioner: 'طبيب عام',
+    appointmentRequest: 'طلب موعد', chooseDate: 'اختر التاريخ', availableTime: 'الأوقات المتاحة', patientFullName: 'الاسم الكامل', phoneNumber: 'رقم الهاتف', confirmAppointment: 'تأكيد الموعد', bookingValidation: 'أدخل اسمك ورقم هاتف صحيحاً واختر تاريخاً مستقبلياً.', demoBookingDisclaimer: 'نسخة تجريبية فقط: يُحفظ الطلب في هذا المتصفح ولا يُرسل إلى العيادة.', bookingRequested: 'تم حفظ الطلب · تجريبي', bookedFor: 'باسم',
   },
   fr: {
     metaTitle: 'KLINLINK — Des soins connectés', metaDescription: 'KLINLINK — Trouvez des professionnels de santé et gérez vos rendez-vous.',
@@ -93,6 +95,7 @@ export const translations = {
     checkup: 'Bilan de santé', generalHealth: 'Santé générale', dental: 'Dentisterie', teethGums: 'Dents et gencives',
     cardiology: 'Cardiologie', heartHealth: 'Santé cardiaque', neurology: 'Neurologie', brainNerves: 'Cerveau et nerfs',
     cardiologist: 'Cardiologue', dentist: 'Dentiste', neurologist: 'Neurologue', generalPractitioner: 'Médecin généraliste',
+    appointmentRequest: 'DEMANDE DE RENDEZ-VOUS', chooseDate: 'Choisir une date', availableTime: 'Horaires disponibles', patientFullName: 'Nom complet', phoneNumber: 'Numéro de téléphone', confirmAppointment: 'Confirmer le rendez-vous', bookingValidation: 'Saisissez votre nom, un numéro valide et une date future.', demoBookingDisclaimer: 'Démo uniquement : cette demande est enregistrée dans ce navigateur et non envoyée à la clinique.', bookingRequested: 'Demande enregistrée · Démo', bookedFor: 'Au nom de',
   },
 } as const;
 
