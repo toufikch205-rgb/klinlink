@@ -34,7 +34,7 @@ export const translations = {
   },
   ar: {
     metaTitle: 'KLINLINK — رعاية صحية مترابطة', metaDescription: 'KLINLINK — اعثر على المختصين في الرعاية الصحية وأدر مواعيدك.',
-    language: 'اللغة', languageTitle: 'لغة التطبيق', languageDescription: 'اختر اللغة التي تريد استخدامها في جميع أقسام KLINLINK.', english: 'English', arabic: 'العربية',
+    language: 'اللغة', languageTitle: 'لغة التطبيق', languageDescription: 'اختر اللغة التي تريد استخدامها في جميع أقسام KLINLINK.', english: 'English', arabic: 'العربية', french: 'Français',
     home: 'الرئيسية', appointments: 'المواعيد', messages: 'الرسائل', settings: 'الإعدادات',
     mainNavigation: 'التنقل الرئيسي', notifications: 'الإشعارات', patient: 'مريض',
     patientAccount: 'حساب المريض', caughtUp: 'لا توجد إشعارات جديدة.',
