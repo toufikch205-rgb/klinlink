@@ -44,4 +44,4 @@ function showView(v){document.getElementById('homeView').style.display=v==='home
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2600)}
 renderDoctors();renderAppointments();
-</script></body></html>
+</script><script src="patient-features.js"></script></body></html>
