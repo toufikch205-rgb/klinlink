@@ -1,5 +1,3 @@
-import type { Doctor } from '../doctors/types';
-
 export type Appointment = {
   id: string;
   doctorId: number;
