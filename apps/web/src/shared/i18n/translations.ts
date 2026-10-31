@@ -3,7 +3,7 @@ export type Language = 'en' | 'ar';
 export const translations = {
   en: {
     metaTitle: 'KLINLINK — Healthcare, connected', metaDescription: 'KLINLINK — Find healthcare professionals and manage appointments.',
-    language: 'Language', english: 'English', arabic: 'العربية',
+    language: 'Language', languageTitle: 'App language', languageDescription: 'Choose the language used throughout KLINLINK.', english: 'English', arabic: 'العربية',
     home: 'Home', appointments: 'Appointments', messages: 'Messages', settings: 'Settings',
     mainNavigation: 'Main navigation', notifications: 'Notifications', patient: 'Patient',
     patientAccount: 'Patient account', caughtUp: "You’re all caught up.",
@@ -34,7 +34,7 @@ export const translations = {
   },
   ar: {
     metaTitle: 'KLINLINK — رعاية صحية مترابطة', metaDescription: 'KLINLINK — اعثر على المختصين في الرعاية الصحية وأدر مواعيدك.',
-    language: 'اللغة', english: 'English', arabic: 'العربية',
+    language: 'اللغة', languageTitle: 'لغة التطبيق', languageDescription: 'اختر اللغة التي تريد استخدامها في جميع أقسام KLINLINK.', english: 'English', arabic: 'العربية',
     home: 'الرئيسية', appointments: 'المواعيد', messages: 'الرسائل', settings: 'الإعدادات',
     mainNavigation: 'التنقل الرئيسي', notifications: 'الإشعارات', patient: 'مريض',
     patientAccount: 'حساب المريض', caughtUp: 'لا توجد إشعارات جديدة.',
