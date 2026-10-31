@@ -8,14 +8,28 @@ export function readAppointments(storage: Pick<Storage, 'getItem'> = window.loca
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item): item is Appointment =>
-      Boolean(item && typeof item === 'object' &&
-        typeof item.id === 'string' &&
-        typeof item.doctorName === 'string' &&
-        typeof item.date === 'string' &&
-        typeof item.time === 'string' &&
-        typeof item.patientName === 'string')
-    );
+    return parsed.flatMap((item, index): Appointment[] => {
+      if (!item || typeof item !== 'object') return [];
+      const value = item as Record<string, unknown>;
+      // Keep records written by the original HTML app readable during migration.
+      const doctorName = typeof value.doctorName === 'string' ? value.doctorName : value.doctor;
+      const patientName = typeof value.patientName === 'string' ? value.patientName : value.name;
+      if (typeof doctorName !== 'string' || typeof patientName !== 'string' ||
+          typeof value.date !== 'string' || typeof value.time !== 'string') return [];
+      return [{
+        id: typeof value.id === 'string' ? value.id : `legacy-${index}-${value.date}-${value.time}`,
+        doctorId: typeof value.doctorId === 'number' ? value.doctorId : 0,
+        doctorName,
+        specialty: typeof value.specialty === 'string' ? value.specialty : (typeof value.spec === 'string' ? value.spec : ''),
+        clinic: typeof value.clinic === 'string' ? value.clinic : '',
+        patientName,
+        patientPhone: typeof value.patientPhone === 'string' ? value.patientPhone : (typeof value.phone === 'string' ? value.phone : ''),
+        date: value.date,
+        time: value.time,
+        status: 'requested',
+        createdAt: typeof value.createdAt === 'string' ? value.createdAt : '',
+      }];
+    });
   } catch {
     return [];
   }
