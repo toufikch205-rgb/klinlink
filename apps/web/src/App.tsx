@@ -4,6 +4,9 @@ import { doctors } from './features/doctors/demoDoctors';
 import { useDoctorDirectory } from './features/doctors/hooks/useDoctorDirectory';
 import HomePage from './features/home/pages/HomePage';
 import AppointmentsPage from './features/appointments/pages/AppointmentsPage';
+import BookingModal from './features/appointments/components/BookingModal';
+import type { Appointment } from './features/appointments/types';
+import { readAppointments, saveAppointment } from './features/appointments/services/appointmentStorage';
 import MessagesPage from './features/messages/pages/MessagesPage';
 import PatientSettingsPage from './features/patients/pages/PatientSettingsPage';
 import AppHeader from './shared/components/AppHeader';
@@ -18,6 +21,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('Home');
   const [favorites, setFavorites] = useState<number[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
+  const [bookingDoctor, setBookingDoctor] = useState<Doctor | null>(null);
+  const [appointments, setAppointments] = useState<Appointment[]>(() => readAppointments());
   const [showNotifications, setShowNotifications] = useState(false);
 
   const visibleDoctors = useDoctorDirectory(doctors, query, category);
@@ -26,8 +31,17 @@ export default function App() {
     current.includes(id) ? current.filter((item) => item !== id) : [...current, id]
   );
 
-  const handleBookAppointment = (_doctor: Doctor) => {
-    window.alert(t('bookingNotice'));
+  const handleBookAppointment = (doctor: Doctor) => {
+    setBookingDoctor(doctor);
+  };
+
+  const handleConfirmAppointment = (appointment: Appointment) => {
+    const next = saveAppointment(appointment);
+    setAppointments(next);
+    setBookingDoctor(null);
+    setSelectedDoctor(null);
+    setActiveTab('Appointment');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -48,7 +62,7 @@ export default function App() {
               onToggleFavorite={toggleFavorite}
             />
           )}
-          {activeTab === 'Appointment' && <AppointmentsPage />}
+          {activeTab === 'Appointment' && <AppointmentsPage appointments={appointments} />}
           {activeTab === 'Message' && <MessagesPage />}
           {activeTab === 'Setting' && <PatientSettingsPage />}
         </div>
@@ -58,6 +72,7 @@ export default function App() {
         onClose={() => setSelectedDoctor(null)}
         onBook={handleBookAppointment}
       />
+      <BookingModal doctor={bookingDoctor} onClose={() => setBookingDoctor(null)} onConfirm={handleConfirmAppointment} />
     </main>
   );
 }
