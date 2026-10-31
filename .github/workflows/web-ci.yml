@@ -31,5 +31,7 @@ jobs:
         run: npm install
       - name: Type-check
         run: npm run typecheck
+      - name: Run unit tests
+        run: npm run test:run
       - name: Build production bundle
         run: npm run build
