@@ -24,6 +24,15 @@ describe('appointment storage', () => {
     expect(readAppointments(memoryStorage('{}'))).toEqual([]);
   });
 
+  it('keeps appointments created by the original HTML app readable', () => {
+    const legacy = memoryStorage(JSON.stringify([{ doctor: 'Dr. Old App', spec: 'Dentist', name: 'Demo Patient', phone: '+213000000000', date: '2099-02-01', time: '10:00 AM' }]));
+    const [appointment] = readAppointments(legacy);
+    expect(appointment.doctorName).toBe('Dr. Old App');
+    expect(appointment.patientName).toBe('Demo Patient');
+    expect(appointment.patientPhone).toBe('+213000000000');
+    expect(appointment.id).toContain('legacy-');
+  });
+
   it('saves and reloads appointment records using the legacy storage key', () => {
     const storage = memoryStorage();
     expect(saveAppointment(sample, storage)).toEqual([sample]);
