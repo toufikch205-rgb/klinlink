@@ -1,4 +1,5 @@
-import { Bell, Stethoscope } from 'lucide-react';
+import { Bell, Stethoscope, Languages } from 'lucide-react';
+import { useI18n } from '../i18n/I18nProvider';
 
 type AppHeaderProps = {
   notificationsOpen: boolean;
@@ -6,17 +7,26 @@ type AppHeaderProps = {
 };
 
 export default function AppHeader({ notificationsOpen, onToggleNotifications }: AppHeaderProps) {
+  const { language, setLanguage, t } = useI18n();
   return (
     <header className="topbar">
       <div className="brand"><span className="brand-mark"><Stethoscope size={19} /></span><strong>KLINLINK</strong></div>
       <div className="top-actions">
-        <button className="icon-button notification-button" aria-label="Notifications" aria-expanded={notificationsOpen} onClick={onToggleNotifications}><Bell size={19} /><i /></button>
+        <label className="language-control">
+          <Languages size={17} />
+          <span className="sr-only">{t('language')}</span>
+          <select aria-label={t('language')} value={language} onChange={(event) => setLanguage(event.target.value as 'en' | 'ar')}>
+            <option value="en">{t('english')}</option>
+            <option value="ar">{t('arabic')}</option>
+          </select>
+        </label>
+        <button className="icon-button notification-button" aria-label={t('notifications')} aria-expanded={notificationsOpen} onClick={onToggleNotifications}><Bell size={19} /><i /></button>
         <div className="user-chip">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces" alt="Patient profile" />
-          <span><b>Alex Morgan</b><small>Patient account</small></span>
+          <span className="user-avatar" aria-hidden="true">K</span>
+          <span><b>KLINLINK</b><small>{t('patientAccount')}</small></span>
         </div>
       </div>
-      {notificationsOpen && <div className="notification-popover" role="status"><b>Notifications</b><p>You’re all caught up.</p></div>}
+      {notificationsOpen && <div className="notification-popover" role="status"><b>{t('notifications')}</b><p>{t('caughtUp')}</p></div>}
     </header>
   );
 }
