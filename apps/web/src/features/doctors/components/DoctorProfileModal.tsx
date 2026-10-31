@@ -1,6 +1,7 @@
 import { Clock3, MapPin, Star, X, ChevronRight } from 'lucide-react';
 import type { Doctor } from '../types';
 import { useI18n } from '../../../shared/i18n/I18nProvider';
+import { formatCity, formatWorkingHours } from '../../../shared/i18n/formatters';
 
 type DoctorProfileModalProps = {
   doctor: Doctor | null;
@@ -16,7 +17,7 @@ const specialtyKeys: Record<string, 'cardiologist' | 'dentist' | 'neurologist' |
 };
 
 export default function DoctorProfileModal({ doctor, onClose, onBook }: DoctorProfileModalProps) {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   if (!doctor) return null;
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -25,10 +26,10 @@ export default function DoctorProfileModal({ doctor, onClose, onBook }: DoctorPr
         <img src={doctor.image} alt={doctor.name} />
         <span className={`status ${doctor.online ? 'online' : ''}`}>{t('doctorProfile')}</span>
         <h2 id="doctor-modal-title">{doctor.name}</h2>
-        <p>{t(specialtyKeys[doctor.specialty] ?? 'generalPractitioner')} · {doctor.city}</p>
+        <p>{t(specialtyKeys[doctor.specialty] ?? 'generalPractitioner')} · {formatCity(doctor.city, language)}</p>
         <div className="modal-rating"><Star size={16} fill="currentColor" /> {doctor.rating} {t('patientRating')}</div>
         <div className="modal-detail"><MapPin size={17} />{doctor.clinic}</div>
-        <div className="modal-detail"><Clock3 size={17} />{doctor.hours}</div>
+        <div className="modal-detail"><Clock3 size={17} />{formatWorkingHours(doctor.hours, language)}</div>
         <button className="primary-button" onClick={() => onBook(doctor)}>{t('bookAppointment')} <ChevronRight size={17} /></button>
       </section>
     </div>
