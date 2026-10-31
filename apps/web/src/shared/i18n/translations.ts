@@ -2,6 +2,7 @@ export type Language = 'en' | 'ar';
 
 export const translations = {
   en: {
+    metaTitle: 'KLINLINK — Healthcare, connected', metaDescription: 'KLINLINK — Find healthcare professionals and manage appointments.',
     language: 'Language', english: 'English', arabic: 'العربية',
     home: 'Home', appointments: 'Appointments', messages: 'Messages', settings: 'Settings',
     mainNavigation: 'Main navigation', notifications: 'Notifications', patient: 'Patient',
@@ -32,6 +33,7 @@ export const translations = {
     generalPractitioner: 'General Practitioner',
   },
   ar: {
+    metaTitle: 'KLINLINK — رعاية صحية مترابطة', metaDescription: 'KLINLINK — اعثر على المختصين في الرعاية الصحية وأدر مواعيدك.',
     language: 'اللغة', english: 'English', arabic: 'العربية',
     home: 'الرئيسية', appointments: 'المواعيد', messages: 'الرسائل', settings: 'الإعدادات',
     mainNavigation: 'التنقل الرئيسي', notifications: 'الإشعارات', patient: 'مريض',
