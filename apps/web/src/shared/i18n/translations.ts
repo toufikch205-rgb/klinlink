@@ -1,4 +1,4 @@
-export type Language = 'en' | 'ar';
+export type Language = 'en' | 'ar' | 'fr';
 
 export const translations = {
   en: {
@@ -63,6 +63,36 @@ export const translations = {
     cardiology: 'أمراض القلب', heartHealth: 'صحة القلب', neurology: 'طب الأعصاب', brainNerves: 'الدماغ والأعصاب',
     cardiologist: 'طبيب أمراض القلب', dentist: 'طبيب أسنان', neurologist: 'طبيب أعصاب',
     generalPractitioner: 'طبيب عام',
+  },,
+  fr: {
+    metaTitle: 'KLINLINK — Des soins connectés', metaDescription: 'KLINLINK — Trouvez des professionnels de santé et gérez vos rendez-vous.',
+    language: 'Langue', languageTitle: 'Langue de l’application', languageDescription: 'Choisissez la langue utilisée dans toute l’application KLINLINK.', english: 'English', arabic: 'العربية', french: 'Français',
+    home: 'Accueil', appointments: 'Rendez-vous', messages: 'Messages', settings: 'Paramètres',
+    mainNavigation: 'Navigation principale', notifications: 'Notifications', patient: 'Patient',
+    patientAccount: 'Compte patient', caughtUp: 'Vous êtes à jour.',
+    greeting: 'Bienvenue sur KLINLINK', greetingSub: 'Trouvez les bons soins. Prenez soin de vous plus tôt.',
+    trustedCare: 'Des soins en toute confiance', searchPlaceholder: 'Rechercher des médecins, spécialités, cliniques...',
+    searchDoctors: 'Rechercher des médecins', allLocations: 'Toutes les villes', exploreCare: 'DÉCOUVRIR LES SOINS',
+    findSpecialty: 'Rechercher par spécialité', viewAll: 'Tout voir', personalized: 'SÉLECTIONNÉ POUR VOUS',
+    recommendedDoctors: 'Médecins recommandés', connectSpecialists: 'Contactez des professionnels de santé près de chez vous.',
+    seeAllDoctors: 'Voir tous les médecins', noDoctors: 'Aucun médecin trouvé', tryAnother: 'Essayez un autre nom ou une autre spécialité.',
+    available: 'Disponible', offline: 'Indisponible', addFavorite: 'Ajouter aux favoris',
+    removeFavorite: 'Retirer des favoris', viewProfile: 'Voir le profil', doctorProfile: 'Profil du médecin',
+    patientRating: 'avis des patients', close: 'Fermer', bookAppointment: 'Prendre rendez-vous',
+    bookingNotice: 'La prise de rendez-vous sera disponible dans une prochaine phase de développement.',
+    patientArea: 'ESPACE PATIENT', myAppointments: 'Mes rendez-vous',
+    appointmentsDescription: 'Vos prochaines visites et vos consultations précédentes apparaîtront ici.',
+    noAppointments: 'Aucun rendez-vous pour le moment',
+    appointmentsEmpty: 'Trouvez un médecin et prenez votre premier rendez-vous. Vos réservations apparaîtront ici.',
+    messagesDescription: 'Vos conversations avec les professionnels de santé apparaîtront ici.',
+    noMessages: 'Aucun message pour le moment',
+    messagesEmpty: 'Lorsque la messagerie sera activée, vous pourrez contacter les cliniques et suivre vos soins.',
+    settingsDescription: 'Gérez votre compte patient et vos préférences.',
+    accountSettings: 'Paramètres du compte',
+    settingsEmpty: 'Le profil, la langue, les notifications et les paramètres de confidentialité seront disponibles ici.',
+    checkup: 'Bilan de santé', generalHealth: 'Santé générale', dental: 'Dentisterie', teethGums: 'Dents et gencives',
+    cardiology: 'Cardiologie', heartHealth: 'Santé cardiaque', neurology: 'Neurologie', brainNerves: 'Cerveau et nerfs',
+    cardiologist: 'Cardiologue', dentist: 'Dentiste', neurologist: 'Neurologue', generalPractitioner: 'Médecin généraliste',
   },
 } as const;
 
