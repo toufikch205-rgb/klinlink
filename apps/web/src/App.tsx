@@ -4,7 +4,7 @@ import { doctors } from './features/doctors/demoDoctors';
 import {
   Activity, Bell, CalendarDays, ChevronRight, Clock3, Heart, Home,
   MapPin, MessageCircle, Search, Settings, ShieldCheck, Star, Stethoscope,
-  UserRound, Brain, Smile, Menu, X
+  UserRound, Brain, Smile, Menu, X, ClipboardList, Inbox, Settings2
 } from 'lucide-react';
 
 
@@ -37,10 +37,10 @@ export default function App() {
     <main className="app-shell">
       <aside className="desktop-rail">
         <div className="brand-mark"><Stethoscope size={22} /></div>
-        <span className="rail-active"><Home size={20} /></span>
-        <span><CalendarDays size={20} /></span>
-        <span><MessageCircle size={20} /></span>
-        <span><Settings size={20} /></span>
+        <button aria-label="Home" title="Home" className={activeTab === 'Home' ? 'rail-active' : ''} onClick={() => setActiveTab('Home')}><Home size={20} /></button>
+        <button aria-label="Appointments" title="Appointments" className={activeTab === 'Appointment' ? 'rail-active' : ''} onClick={() => setActiveTab('Appointment')}><CalendarDays size={20} /></button>
+        <button aria-label="Messages" title="Messages" className={activeTab === 'Message' ? 'rail-active' : ''} onClick={() => setActiveTab('Message')}><MessageCircle size={20} /></button>
+        <button aria-label="Settings" title="Settings" className={activeTab === 'Setting' ? 'rail-active' : ''} onClick={() => setActiveTab('Setting')}><Settings size={20} /></button>
         <div className="rail-bottom"><ShieldCheck size={20} /></div>
       </aside>
 
@@ -55,6 +55,7 @@ export default function App() {
         </header>
 
         <div className="page-wrap">
+          {activeTab === 'Home' ? <>
           <section className="welcome-row">
             <div><p className="eyebrow">MONDAY, OCTOBER 26</p><h1>Good morning, Alex <span>✦</span></h1><p className="subheading">Find the right care. Feel better, sooner.</p></div>
             <div className="welcome-badge"><ShieldCheck size={18} /><span>Care you can trust</span></div>
@@ -82,13 +83,21 @@ export default function App() {
               {visibleDoctors.length === 0 && <div className="empty-state"><Search size={25} /><b>No doctors found</b><span>Try another name or specialty.</span></div>}
             </div>
           </section>
+          </> : <section className="section-block destination-page">
+            <div className="section-heading"><div><p className="eyebrow">KLINLINK PATIENT</p><h2>{activeTab === 'Appointment' ? 'My appointments' : activeTab === 'Message' ? 'Messages' : 'Settings'}</h2><p className="section-caption">{activeTab === 'Appointment' ? 'Your upcoming and previous visits will appear here.' : activeTab === 'Message' ? 'Conversations with your healthcare providers will appear here.' : 'Manage your patient account and preferences.'}</p></div></div>
+            <div className="destination-card">
+              <span className="destination-icon">{activeTab === 'Appointment' ? <ClipboardList size={25} /> : activeTab === 'Message' ? <Inbox size={25} /> : <Settings2 size={25} />}</span>
+              <h3>{activeTab === 'Appointment' ? 'No appointments yet' : activeTab === 'Message' ? 'No messages yet' : 'Account settings'}</h3>
+              <p>{activeTab === 'Appointment' ? 'Find a doctor and book your first appointment. Your bookings will be listed here.' : activeTab === 'Message' ? 'Once messaging is enabled, you can contact clinics and follow up on your care.' : 'Profile, language, notifications and privacy controls will be available here.'}</p>
+              {activeTab !== 'Setting' && <button className="primary-button destination-action" onClick={() => setActiveTab('Home')}>Find a doctor <ChevronRight size={17} /></button>}
+            </div>
+          </section>}
         </div>
 
         <nav className="mobile-nav" aria-label="Main navigation">
-          {[['Home', Home], ['Appointment', CalendarDays], ['Message', MessageCircle], ['Setting', Settings]].map(([label, Icon]) => {
-            const NavIcon = Icon as typeof Home;
-            return <button key={label as string} className={activeTab === label ? 'active' : ''} onClick={() => setActiveTab(label as string)}><NavIcon size={20} /><span>{label as string}</span></button>;
-          })}
+          {([['Home', Home], ['Appointment', CalendarDays], ['Message', MessageCircle], ['Setting', Settings]] as const).map(([label, NavIcon]) =>
+            <button key={label} className={activeTab === label ? 'active' : ''} aria-current={activeTab === label ? 'page' : undefined} onClick={() => setActiveTab(label)}><NavIcon size={20} /><span>{label}</span></button>
+          )}
         </nav>
       </section>
 
