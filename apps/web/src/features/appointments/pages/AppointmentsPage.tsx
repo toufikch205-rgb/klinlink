@@ -1,4 +1,4 @@
-import { CalendarDays, ClipboardList } from 'lucide-react';
+import { ClipboardList } from 'lucide-react';
 
 export default function AppointmentsPage() {
   return <section className="section-block destination-page">
