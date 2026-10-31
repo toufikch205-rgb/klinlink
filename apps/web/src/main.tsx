@@ -4,6 +4,7 @@ import App from './App';
 import { I18nProvider } from './shared/i18n/I18nProvider';
 import './styles.css';
 import './styles/appointments.css';
+import './styles/queue-estimate.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
