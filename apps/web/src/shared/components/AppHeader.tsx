@@ -15,9 +15,9 @@ export default function AppHeader({ notificationsOpen, onToggleNotifications }: 
         <label className="language-control">
           <Languages size={17} />
           <span className="sr-only">{t('language')}</span>
-          <select aria-label={t('language')} value={language} onChange={(event) => setLanguage(event.target.value as 'en' | 'ar')}>
+          <select aria-label={t('language')} value={language} onChange={(event) => setLanguage(event.target.value as 'en' | 'ar' | 'fr')}>
             <option value="en">{t('english')}</option>
-            <option value="ar">{t('arabic')}</option>
+            <option value="ar">{t('arabic')}</option>\n            <option value="fr">{t('french')}</option>
           </select>
         </label>
         <button className="icon-button notification-button" aria-label={t('notifications')} aria-expanded={notificationsOpen} onClick={onToggleNotifications}><Bell size={19} /><i /></button>
