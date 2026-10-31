@@ -1,32 +1,9 @@
-# KLINLINK Mobile & Cross-platform App
+# Future KLINLINK Mobile App
 
-This directory is reserved for the new React Native + Expo application targeting Android, iOS, and web.
+This directory is reserved for a future React Native + Expo application targeting Android and iOS.
 
-The existing HTML/CSS/JavaScript prototype at the repository root is intentionally preserved as a reference. Do not overwrite or delete it during the migration.
+**Current development is focused on the web application in `apps/web`.** Do not scaffold or develop the mobile app until the web product and shared domain/service boundaries are ready.
 
-## Planned stack
-- React Native
-- Expo
-- TypeScript
-- Expo Router
-- Supabase (introduced after security and data-model review)
+The future mobile app should reuse domain logic, validation, types, and backend service contracts where practical. Native screens and platform-specific capabilities will be implemented with React Native and Expo.
 
-## Local scaffold
-From the repository root, create the Expo app in this directory using the current official Expo starter:
-
-```bash
-npx create-expo-app@latest apps/mobile
-```
-
-If the directory already contains this README, move or temporarily copy the README outside the target directory before running the scaffold, then restore it inside the generated project.
-
-After scaffolding:
-
-```bash
-cd apps/mobile
-npx expo start
-```
-
-Use the Expo terminal shortcuts to open the web preview or run on a connected Android/iOS device or simulator. Native builds and iOS distribution require the relevant platform tooling and credentials.
-
-Before adding backend connectivity, review the repository's `docs/ENGINEERING_STANDARDS.md`, `docs/ARCHITECTURE_PLAN.md`, and `docs/SECURITY_BASELINE.md`.
+Review the repository's engineering, architecture, security, and quality documents before starting this phase.
