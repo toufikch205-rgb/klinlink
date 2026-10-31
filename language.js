@@ -1,0 +1,17 @@
+(function(){
+const dict={
+"Good Morning,":"صباح الخير،","Categories":"التخصصات","View All":"عرض الكل","Check-up":"فحص عام","Dental":"طب الأسنان","Cardiology":"أمراض القلب","Neurology":"طب الأعصاب","Our doctors":"أطباؤنا","Search doctors, specialties...":"ابحث عن طبيب أو تخصص...","Home":"الرئيسية","Appointment":"المواعيد","Message":"الرسائل","Setting":"الإعدادات","Settings":"الإعدادات","Personal profile":"الملف الشخصي","Manage your contact details and preferences.":"إدارة معلومات الاتصال والتفضيلات.","Notifications":"الإشعارات","On":"مفعّلة","My appointments":"مواعيدي","Your booked appointments will appear here.":"ستظهر مواعيدك المحجوزة هنا.","Messages":"الرسائل","Clinic assistant":"مساعد العيادة","Ask about appointments, clinic hours or booking availability.":"اسأل عن المواعيد أو أوقات عمل العيادة أو الحجوزات.","Start conversation":"ابدأ المحادثة","Book appointment":"احجز موعدًا","Choose date":"اختر التاريخ","Available time":"الوقت المتاح","Your name":"اسمك","Phone number":"رقم الهاتف","Full name":"الاسم الكامل","Confirm appointment":"تأكيد الموعد","No doctors found. Try another search.":"لم يتم العثور على أطباء. جرّب بحثًا آخر.","Online":"متاح","Offline":"غير متاح","Favorite doctors":"الأطباء المفضلون","My patient profile":"ملفي الصحي","Save profile":"حفظ الملف الشخصي","Your name":"اسمك","City":"المدينة","About":"نبذة","Clinic":"العيادة","Patient reviews":"آراء المرضى","Add to favorites":"أضف إلى المفضلة","Remove favorite":"إزالة من المفضلة","Share doctor profile":"مشاركة ملف الطبيب","Favorites updated":"تم تحديث المفضلة","Profile link copied":"تم نسخ رابط الملف","QUEUE ESTIMATE · DEMO":"تقدير الدور · تجريبي","estimated patients ahead":"عدد المرضى قبلك (تقديري)","Estimated waiting time: ":"وقت الانتظار المتوقع: ","minutes":"دقيقة","Booking request · ":"طلب حجز · ","Appointment saved successfully!":"تم حفظ الموعد بنجاح!","Please complete your name, phone and date.":"يرجى إدخال الاسم ورقم الهاتف والتاريخ.","Language / اللغة":"اللغة","Choose your preferred app language.":"اختر لغة التطبيق المفضلة.","Demo only: bookings are stored in this browser, not sent to a real clinic.":"نسخة تجريبية: تُحفظ الحجوزات في هذا المتصفح ولا تُرسل إلى عيادة حقيقية."
+};
+function apply(lang){
+const ar=lang==="ar";document.documentElement.lang=ar?"ar":"en";document.document.documentElement.dir=ar?"rtl":"ltr";
+const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
+while(n=walker.nextNode()){const raw=n.nodeValue.trim();if(dict[raw])n.nodeValue=n.nodeValue.replace(raw,ar?dict[raw]:Object.keys(dict).find(k=>dict[k]===raw)||raw);else if(!ar){const en=Object.keys(dict).find(k=>dict[k]===raw);if(en)n.nodeValue=n.nodeValue.replace(raw,en)}}
+document.querySelectorAll("input[placeholder]").forEach(el=>{if(ar){el.dataset.enPlaceholder=el.dataset.enPlaceholder||el.placeholder;el.placeholder=dict[el.placeholder]||el.placeholder}else if(el.dataset.enPlaceholder)el.placeholder=el.dataset.enPlaceholder});
+document.body.style.fontFamily=ar?"Tahoma,Arial,sans-serif":"'DM Sans',Arial,sans-serif";
+localStorage.setItem("klinlink-language",lang);
+}
+const saved=localStorage.getItem("klinlink-language")||"en";
+const select=document.getElementById("languageSelect");if(select){select.value=saved;select.addEventListener("change",()=>apply(select.value))}
+apply(saved);
+new MutationObserver(()=>{if(localStorage.getItem("klinlink-language")==="ar")apply("ar")}).observe(document.body,{childList:true,subtree:true});
+})();
