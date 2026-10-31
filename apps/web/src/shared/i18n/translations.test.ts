@@ -3,14 +3,18 @@ import { translations } from './translations';
 import { formatCity, formatWorkingHours } from './formatters';
 
 describe('KLINLINK localization', () => {
-  it('provides the same translation keys in English and Arabic', () => {
+  it('provides the same translation keys in English, Arabic and French', () => {
     expect(Object.keys(translations.ar).sort()).toEqual(Object.keys(translations.en).sort());
+    expect(Object.keys(translations.fr).sort()).toEqual(Object.keys(translations.en).sort());
   });
 
   it('sets Arabic and French page metadata and navigation labels', () => {
     expect(translations.ar.metaTitle).toContain('KLINLINK');
     expect(translations.ar.home).toBe('الرئيسية');
-    expect(translations.ar.appointments).toBe('المواعيد');\n    expect(translations.fr.metaTitle).toContain('KLINLINK');\n    expect(translations.fr.home).toBe('Accueil');\n    expect(translations.fr.appointments).toBe('Rendez-vous');
+    expect(translations.ar.appointments).toBe('المواعيد');
+    expect(translations.fr.metaTitle).toContain('KLINLINK');
+    expect(translations.fr.home).toBe('Accueil');
+    expect(translations.fr.appointments).toBe('Rendez-vous');
   });
 
   it('formats supported cities and working hours in Arabic', () => {
