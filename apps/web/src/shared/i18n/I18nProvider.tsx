@@ -31,6 +31,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.title = translations[language].metaTitle;
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute('content', translations[language].metaDescription);
   }, [language]);
 
   const value = useMemo<I18nContextValue>(() => ({
