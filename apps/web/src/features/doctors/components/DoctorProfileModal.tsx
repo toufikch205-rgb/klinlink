@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Clock3, MapPin, Star, X, ChevronRight, CalendarDays } from 'lucide-react';
+import { Clock3, MapPin, Star, X, ChevronRight, CalendarDays, Share2 } from 'lucide-react';
 import type { Doctor } from '../types';
 import { useI18n } from '../../../shared/i18n/I18nProvider';
 import { formatCity, formatWorkingHours } from '../../../shared/i18n/formatters';
@@ -26,7 +26,16 @@ export default function DoctorProfileModal({ doctor, onClose, onBook }: DoctorPr
   const [error, setError] = useState('');
   if (!doctor) return null;
 
-  const today = new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const shareProfile = async () => {
+    const url = `${window.location.origin}${window.location.pathname}?doctor=${doctor.id}`;
+    try {
+      if (navigator.share) await navigator.share({ title: doctor.name, url });
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(url); window.alert(t('profileLinkCopied')); }
+      else window.prompt(t('shareProfile'), url);
+    } catch { /* Sharing was cancelled or unavailable; the profile remains open. */ }
+  };
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!patientName.trim() || !patientPhone.trim() || !date || date < today) {
@@ -48,6 +57,7 @@ export default function DoctorProfileModal({ doctor, onClose, onBook }: DoctorPr
         <div className="modal-rating"><Star size={16} fill="currentColor" /> {doctor.rating} {t('patientRating')}</div>
         <div className="modal-detail"><MapPin size={17} />{doctor.clinic}</div>
         <div className="modal-detail"><Clock3 size={17} />{formatWorkingHours(doctor.hours, language)}</div>
+        <button className="profile-share-button" type="button" onClick={shareProfile}><Share2 size={16}/>{t('shareProfile')}</button>
         <form className="booking-form" onSubmit={submit}>
           <h3><CalendarDays size={17} /> {t('requestAppointment')}</h3>
           <label>{t('patientName')}<input value={patientName} onChange={(e) => setPatientName(e.target.value)} autoComplete="name" required /></label>
