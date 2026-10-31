@@ -48,6 +48,12 @@ export default function HomePage(props: HomePageProps) {
           })}
         </div>
       </section>
+      {favorites.length > 0 && <section className="section-block">
+        <div className="section-heading"><div><p className="eyebrow">{t('patientArea')}</p><h2>{t('favoriteDoctors')}</h2></div></div>
+        <div className="doctor-grid">
+          {doctors.filter((doctor) => favorites.includes(doctor.id)).map((doctor) => <DoctorCard key={doctor.id} doctor={doctor} favorite onSelect={onSelectDoctor} onToggleFavorite={onToggleFavorite} />)}
+        </div>
+      </section>}
       <section className="section-block doctors-section">
         <div className="section-heading"><div><p className="eyebrow">{t('personalized')}</p><h2>{t('recommendedDoctors')}</h2><p className="section-caption">{t('connectSpecialists')}</p></div><button className="text-link" onClick={() => onCategoryChange('All')}>{t('seeAllDoctors')} <ChevronRight size={16} /></button></div>
         <div className="doctor-grid">
