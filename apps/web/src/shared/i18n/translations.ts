@@ -32,7 +32,6 @@ export const translations = {
     requestAppointment: 'Request an appointment', patientName: 'Full name', patientPhone: 'Phone number', appointmentDate: 'Preferred date', appointmentTime: 'Preferred time', confirmBooking: 'Confirm appointment request', bookingValidation: 'Complete all fields and choose a valid future date.', bookingSaveError: 'We could not save your request. Please try again.', demoBookingNotice: 'Demo request only. The clinic has not received this booking.', appointmentRequest: 'APPOINTMENT REQUEST', pendingConfirmation: 'Awaiting confirmation',
     cardiologist: 'Cardiologist', dentist: 'Dentist', neurologist: 'Neurologist',
     generalPractitioner: 'General Practitioner',
-    appointmentRequest: 'APPOINTMENT REQUEST', chooseDate: 'Choose date', availableTime: 'Available time', patientFullName: 'Your full name', phoneNumber: 'Phone number', confirmAppointment: 'Confirm appointment', bookingValidation: 'Enter your name, a valid phone number and a future date.', demoBookingDisclaimer: 'Demo only: this request is saved in this browser and is not sent to a clinic.', bookingRequested: 'Request saved · Demo', bookedFor: 'Booked for',
   },
   ar: {
     metaTitle: 'KLINLINK — رعاية صحية مترابطة', metaDescription: 'KLINLINK — اعثر على المختصين في الرعاية الصحية وأدر مواعيدك.',
@@ -66,7 +65,6 @@ export const translations = {
     requestAppointment: 'طلب موعد', patientName: 'الاسم الكامل', patientPhone: 'رقم الهاتف', appointmentDate: 'التاريخ المناسب', appointmentTime: 'الوقت المناسب', confirmBooking: 'تأكيد طلب الموعد', bookingValidation: 'يرجى ملء جميع الحقول واختيار تاريخ صحيح في المستقبل.', bookingSaveError: 'تعذر حفظ طلبك. حاول مرة أخرى.', demoBookingNotice: 'طلب تجريبي فقط، لم تستلم العيادة هذا الحجز.', appointmentRequest: 'طلب موعد', pendingConfirmation: 'في انتظار التأكيد',
     cardiologist: 'طبيب أمراض القلب', dentist: 'طبيب أسنان', neurologist: 'طبيب أعصاب',
     generalPractitioner: 'طبيب عام',
-    appointmentRequest: 'طلب موعد', chooseDate: 'اختر التاريخ', availableTime: 'الأوقات المتاحة', patientFullName: 'الاسم الكامل', phoneNumber: 'رقم الهاتف', confirmAppointment: 'تأكيد الموعد', bookingValidation: 'أدخل اسمك ورقم هاتف صحيحاً واختر تاريخاً مستقبلياً.', demoBookingDisclaimer: 'نسخة تجريبية فقط: يُحفظ الطلب في هذا المتصفح ولا يُرسل إلى العيادة.', bookingRequested: 'تم حفظ الطلب · تجريبي', bookedFor: 'باسم',
   },
   fr: {
     metaTitle: 'KLINLINK — Des soins connectés', metaDescription: 'KLINLINK — Trouvez des professionnels de santé et gérez vos rendez-vous.',
@@ -98,7 +96,6 @@ export const translations = {
     cardiology: 'Cardiologie', heartHealth: 'Santé cardiaque', neurology: 'Neurologie', brainNerves: 'Cerveau et nerfs',
     requestAppointment: 'Demander un rendez-vous', patientName: 'Nom complet', patientPhone: 'Numéro de téléphone', appointmentDate: 'Date souhaitée', appointmentTime: 'Heure souhaitée', confirmBooking: 'Confirmer la demande', bookingValidation: 'Remplissez tous les champs et choisissez une date future valide.', bookingSaveError: 'Impossible d’enregistrer votre demande. Réessayez.', demoBookingNotice: 'Demande de démonstration uniquement. La clinique ne l’a pas reçue.', appointmentRequest: 'DEMANDE DE RENDEZ-VOUS', pendingConfirmation: 'En attente de confirmation',
     cardiologist: 'Cardiologue', dentist: 'Dentiste', neurologist: 'Neurologue', generalPractitioner: 'Médecin généraliste',
-    appointmentRequest: 'DEMANDE DE RENDEZ-VOUS', chooseDate: 'Choisir une date', availableTime: 'Horaires disponibles', patientFullName: 'Nom complet', phoneNumber: 'Numéro de téléphone', confirmAppointment: 'Confirmer le rendez-vous', bookingValidation: 'Saisissez votre nom, un numéro valide et une date future.', demoBookingDisclaimer: 'Démo uniquement : cette demande est enregistrée dans ce navigateur et non envoyée à la clinique.', bookingRequested: 'Demande enregistrée · Démo', bookedFor: 'Au nom de',
   },
 } as const;
 
