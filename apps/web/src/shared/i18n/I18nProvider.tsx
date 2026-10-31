@@ -13,7 +13,7 @@ const STORAGE_KEY = 'klinlink-language';
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     try {
-      return localStorage.getItem(STORAGE_KEY) === 'ar' ? 'ar' : 'en';
+      const saved = localStorage.getItem(STORAGE_KEY);\n      return saved === 'ar' || saved === 'fr' ? saved : 'en';
     } catch {
       return 'en';
     }
