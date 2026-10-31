@@ -63,7 +63,7 @@ export const translations = {
     cardiology: 'أمراض القلب', heartHealth: 'صحة القلب', neurology: 'طب الأعصاب', brainNerves: 'الدماغ والأعصاب',
     cardiologist: 'طبيب أمراض القلب', dentist: 'طبيب أسنان', neurologist: 'طبيب أعصاب',
     generalPractitioner: 'طبيب عام',
-  },,
+  },
   fr: {
     metaTitle: 'KLINLINK — Des soins connectés', metaDescription: 'KLINLINK — Trouvez des professionnels de santé et gérez vos rendez-vous.',
     language: 'Langue', languageTitle: 'Langue de l’application', languageDescription: 'Choisissez la langue utilisée dans toute l’application KLINLINK.', english: 'English', arabic: 'العربية', french: 'Français',
