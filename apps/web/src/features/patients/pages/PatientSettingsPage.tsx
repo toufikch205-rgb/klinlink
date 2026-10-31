@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import '../../../styles/patient-profile.css';
 import { Languages, Settings2, UserRound, Save } from 'lucide-react';
 import { useI18n } from '../../../shared/i18n/I18nProvider';
 import { readPatientProfile, savePatientProfile, type PatientProfile } from '../services/patientProfileStorage';
