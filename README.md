@@ -1,20 +1,38 @@
-# KLINLINK — Healthcare Platform Prototype
+# KLINLINK
 
-A responsive patient-facing prototype for discovering doctors and booking appointments.
+KLINLINK is a healthcare platform for patients and healthcare professionals.
 
-## Current demo
-- Doctor directory with specialty filters and search
-- Doctor cards with online status, ratings and clinic hours
-- Appointment booking flow with date/time selection
-- Browser-local appointment history
-- Messages and settings placeholders
-- Responsive mobile-first layout inspired by the supplied reference
+## Active development
+The active web application is in `apps/web`, built with React, TypeScript, and Vite. The original root-level HTML prototype is intentionally preserved as a design and behavior reference.
 
-## Run locally
-Open `index.html` in a browser. No build step is required.
+## Run the web application locally
 
-## Important
-This is a visual/interaction prototype. It does not yet connect to a backend, authenticate users, send bookings to clinics, process payments, or handle real patient records. Do not enter real medical or personal information.
+```bash
+cd apps/web
+npm install
+npm run dev
+```
 
-## Planned next steps
-Doctor dashboard, unique public doctor pages, multi-tenant database and access controls, live queue, notifications, and voice/AI assistant integrations.
+Create a production build:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Technology direction
+- Current: React + TypeScript + Vite (web).
+- Backend: Supabase + PostgreSQL, after data model and access-control review.
+- Future: React Native + Expo for Android and iOS, reusing domain logic and service contracts where practical.
+
+## Engineering and security
+See:
+- `docs/ENGINEERING_STANDARDS.md`
+- `docs/ARCHITECTURE_PLAN.md`
+- `docs/SECURITY_BASELINE.md`
+- `docs/QUALITY_PLAN.md`
+
+Standards are engineering references and target practices; this repository does not claim formal certification or regulatory compliance.
+
+## Prototype safety
+The existing root-level prototype uses demo data and browser-local behavior. Do not enter real patient or medical information. The new React web app currently uses static demonstration doctor data and is not connected to a production backend.
