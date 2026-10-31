@@ -29,7 +29,8 @@ export default function PatientSettingsPage() {
               onChange={(event) => setLanguage(event.target.value as 'en' | 'ar' | 'fr')}
             >
               <option value="en">{t('english')}</option>
-              <option value="ar">{t('arabic')}</option>\n              <option value="fr">{t('french')}</option>
+              <option value="ar">{t('arabic')}</option>
+              <option value="fr">{t('french')}</option>
             </select>
           </label>
         </section>
