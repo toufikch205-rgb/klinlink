@@ -3,7 +3,7 @@ export type Language = 'en' | 'ar' | 'fr';
 export const translations = {
   en: {
     metaTitle: 'KLINLINK — Healthcare, connected', metaDescription: 'KLINLINK — Find healthcare professionals and manage appointments.',
-    language: 'Language', languageTitle: 'App language', languageDescription: 'Choose the language used throughout KLINLINK.', english: 'English', arabic: 'العربية',
+    language: 'Language', languageTitle: 'App language', languageDescription: 'Choose the language used throughout KLINLINK.', english: 'English', arabic: 'العربية', french: 'Français',
     home: 'Home', appointments: 'Appointments', messages: 'Messages', settings: 'Settings',
     mainNavigation: 'Main navigation', notifications: 'Notifications', patient: 'Patient',
     patientAccount: 'Patient account', caughtUp: "You’re all caught up.",
