@@ -17,16 +17,16 @@ Retire the root-level legacy HTML/CSS/JavaScript implementation gradually, witho
 | Legacy source | Existing behavior / UI | React destination | Status |
 |---|---|---|---|
 | `index.html` | Main patient shell, greeting, doctor search, specialty categories, doctor cards, navigation, appointment modal, booking confirmation, appointment list, messages, settings, language selector | `App.tsx`, `features/home`, `features/doctors`, `features/appointments`, `features/messages`, `features/patients`, shared components | Partial; React pages are not yet behavior-equivalent |
-| `patient-features.js` | Patient shortcuts, doctor profile detail, favorites, profile sharing, queue estimate, patient profile editor | `features/patients`, `features/doctors`, `features/appointments` | Queue estimate partially migrated; shortcuts, favorites, sharing and profile editor remain |
+| `patient-features.js` | Patient shortcuts, doctor profile detail, favorites, profile sharing, queue estimate, patient profile editor | `features/patients`, `features/doctors`, `features/appointments` | Favorites and patient profile storage/UI migrated in React; sharing and shortcuts still need parity review |
 | `language.js` | Legacy DOM translation, persisted language, Arabic RTL and French LTR, dynamic content translation | `shared/i18n` | React localization exists; needs full-page and dynamic-content verification |
 | `styles.css` | Legacy mobile-first design, doctor cards, modal, bottom navigation, settings and booking styles | `styles/` | React has its own design system; visual parity not yet established |
 
 ## Known parity gaps (must be closed before cutover)
 1. React appointments page is an empty-state placeholder; legacy supports booking and rendering saved appointments.
 2. React doctor selection opens a profile modal, but booking currently displays a demo alert instead of completing the legacy booking flow.
-3. Legacy patient shortcuts for bookings, favorites, and patient profile are not all represented in React.
+3. Favorites now persist using the legacy key and are surfaced on the React home page; dedicated shortcuts and profile sharing still need parity review.
 4. Demo queue estimate is now represented in the React appointments list; its display is explicitly illustrative and not connected to live clinic queue data.
-5. Legacy patient profile editing and browser persistence are not migrated.
+5. Patient profile editing and browser persistence now use the legacy `klinlink-patient` key; manual UI and cross-language acceptance remain.
 6. React messages/settings are placeholders compared with legacy behavior.
 7. The React UI has not yet been verified against the legacy mobile and desktop layouts.
 8. Language switching must be checked across every React page, modal, validation message, and dynamically rendered state.
