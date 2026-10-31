@@ -9,8 +9,10 @@ import PatientSettingsPage from './features/patients/pages/PatientSettingsPage';
 import AppHeader from './shared/components/AppHeader';
 import AppNavigation, { type AppTab } from './shared/components/AppNavigation';
 import DoctorProfileModal from './features/doctors/components/DoctorProfileModal';
+import { useI18n } from './shared/i18n/I18nProvider';
 
 export default function App() {
+  const { t } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('All');
   const [activeTab, setActiveTab] = useState<AppTab>('Home');
@@ -25,7 +27,7 @@ export default function App() {
   );
 
   const handleBookAppointment = (_doctor: Doctor) => {
-    window.alert('Appointment booking will be connected in the next development phase.');
+    window.alert(t('bookingNotice'));
   };
 
   return (
