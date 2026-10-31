@@ -28,6 +28,7 @@ export default function BookingModal({ doctor, onClose, onConfirm }: Props) {
   const [error, setError] = useState('');
 
   if (!doctor) return null;
+  const activeDoctor = doctor;
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,10 +38,10 @@ export default function BookingModal({ doctor, onClose, onConfirm }: Props) {
     }
     onConfirm({
       id: createAppointmentId(),
-      doctorId: doctor.id,
-      doctorName: doctor.name,
-      specialty: doctor.specialty,
-      clinic: doctor.clinic,
+      doctorId: activeDoctor.id,
+      doctorName: activeDoctor.name,
+      specialty: activeDoctor.specialty,
+      clinic: activeDoctor.clinic,
       patientName: name.trim(),
       patientPhone: phone.trim(),
       date,
@@ -56,7 +57,7 @@ export default function BookingModal({ doctor, onClose, onConfirm }: Props) {
     <div className="modal-backdrop booking-backdrop" onClick={onClose}>
       <section className="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" onClick={(event) => event.stopPropagation()}>
         <div className="booking-heading">
-          <div><p className="eyebrow">{t('appointmentRequest')}</p><h2 id="booking-title">{t('bookAppointment')}</h2><p className="booking-doctor">{doctor.name} · {doctor.clinic}</p></div>
+          <div><p className="eyebrow">{t('appointmentRequest')}</p><h2 id="booking-title">{t('bookAppointment')}</h2><p className="booking-doctor">{activeDoctor.name} · {activeDoctor.clinic}</p></div>
           <button className="modal-close" type="button" aria-label={t('close')} onClick={onClose}><X size={19} /></button>
         </div>
         <form onSubmit={submit}>
