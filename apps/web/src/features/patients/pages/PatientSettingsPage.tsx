@@ -26,10 +26,10 @@ export default function PatientSettingsPage() {
             <select
               aria-label={t('language')}
               value={language}
-              onChange={(event) => setLanguage(event.target.value as 'en' | 'ar')}
+              onChange={(event) => setLanguage(event.target.value as 'en' | 'ar' | 'fr')}
             >
               <option value="en">{t('english')}</option>
-              <option value="ar">{t('arabic')}</option>
+              <option value="ar">{t('arabic')}</option>\n              <option value="fr">{t('french')}</option>
             </select>
           </label>
         </section>
