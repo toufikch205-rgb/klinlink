@@ -13,6 +13,7 @@ import { useI18n } from './shared/i18n/I18nProvider';
 import type { Appointment } from './features/appointments/types';
 import { createAppointmentId, readAppointments, saveAppointment } from './features/appointments/services/appointmentStorage';
 import { readFavorites, writeFavorites } from './features/patients/services/favoriteStorage';
+import { clearSharedDoctorFromUrl, findSharedDoctor } from './features/doctors/doctorProfileLink';
 
 export default function App() {
   const { t } = useI18n();
@@ -20,7 +21,7 @@ export default function App() {
   const [category, setCategory] = useState('All');
   const [activeTab, setActiveTab] = useState<AppTab>('Home');
   const [favorites, setFavorites] = useState<number[]>(() => readFavorites());
-  const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
+  const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(() => findSharedDoctor(window.location.search, doctors));
   const [showNotifications, setShowNotifications] = useState(false);
   const [appointments, setAppointments] = useState<Appointment[]>(() => readAppointments());
 
@@ -29,6 +30,11 @@ export default function App() {
     window.addEventListener('storage', sync);
     return () => window.removeEventListener('storage', sync);
   }, []);
+
+  const closeDoctorProfile = () => {
+    setSelectedDoctor(null);
+    clearSharedDoctorFromUrl();
+  };
 
   const visibleDoctors = useDoctorDirectory(doctors, query, category);
   const toggleFavorite = (id: number) => setFavorites((current) => {
@@ -53,7 +59,7 @@ export default function App() {
     };
     try {
       setAppointments(saveAppointment(appointment));
-      setSelectedDoctor(null);
+      closeDoctorProfile();
       setActiveTab('Appointment');
     } catch {
       window.alert(t('bookingSaveError'));
@@ -72,7 +78,7 @@ export default function App() {
           {activeTab === 'Setting' && <PatientSettingsPage />}
         </div>
       </section>
-      <DoctorProfileModal doctor={selectedDoctor} onClose={() => setSelectedDoctor(null)} onBook={handleBookAppointment} />
+      <DoctorProfileModal doctor={selectedDoctor} onClose={closeDoctorProfile} onBook={handleBookAppointment} />
     </main>
   );
 }
